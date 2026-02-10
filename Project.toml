@@ -1,7 +1,7 @@
 name = "GeNIOS"
 uuid = "633953ab-b710-48ef-9c4e-3b2d1d3d8185"
 authors = ["Theo Diamandis"]
-version = "0.2.2"
+version = "0.2.2"  # Bump to 0.2.3 if you want to indicate the compat fix
 
 [deps]
 ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
@@ -16,12 +16,10 @@ RandomizedPreconditioners = "3e7891d3-c9d1-416a-9949-ebd96150e4f0"
 Requires = "ae029012-a4dd-5104-9daa-d747884805df"
 SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
-LinearSolve = "7ed4a6bd-7ac6-59ff-8d9a-6a81aa061f32"      # Declared (no compat bound)
-NonlinearSolve = "8913a72c-46f1-40a4-a5b1-6a0a8b0e9f0f"
 
 [compat]
 ForwardDiff = "1"
-Krylov = "0.9 - 0.10"                  # Allows 0.10.x → supports LinearSolve 3.x+
+Krylov = "0.10"                        # Prefer 0.10.x (latest 0.10.5 supports LinearSolve 3.x)
 LinearAlgebra = "1.9"
 LogExpFunctions = "0.3"
 MathOptInterface = "1"
@@ -33,7 +31,6 @@ Requires = "1"
 SparseArrays = "1.9"
 StaticArrays = "1"
 julia = "1.10"
-NonlinearSolve = "3"                   # Keeps compatibility with SpeedMapping
 
 [extras]
 Optim = "429524aa-4258-5aef-a3af-852621145aeb"
