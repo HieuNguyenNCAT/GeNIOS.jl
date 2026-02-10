@@ -448,7 +448,7 @@ function dual_infeasible(solver::ConicSolver, options::SolverOptions)
 end
 # ------------------------------------------------------------------------------
 
-function solve!(
+function krylov_solve!(
     solver::Solver;
     options::SolverOptions=SolverOptions(),
     use_lbfgs_ml=false
