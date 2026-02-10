@@ -16,12 +16,12 @@ RandomizedPreconditioners = "3e7891d3-c9d1-416a-9949-ebd96150e4f0"
 Requires = "ae029012-a4dd-5104-9daa-d747884805df"
 SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
-LinearSolve = "7ed4a6bd-7ac6-59ff-8d9a-6a81aa061f32"      # Declared so compat is allowed
-NonlinearSolve = "8913a72c-46f1-40a4-a5b1-6a0a8b0e9f0f"    # Declared for resolver flexibility
+LinearSolve = "7ed4a6bd-7ac6-59ff-8d9a-6a81aa061f32"      # Declared (no compat bound)
+NonlinearSolve = "8913a72c-46f1-40a4-a5b1-6a0a8b0e9f0f"
 
 [compat]
 ForwardDiff = "1"
-Krylov = "0.9 - 0.10"                  # Allows upgrade to 0.10.x for better LinearSolve compat
+Krylov = "0.9 - 0.10"                  # Allows 0.10.x → supports LinearSolve 3.x+
 LinearAlgebra = "1.9"
 LogExpFunctions = "0.3"
 MathOptInterface = "1"
@@ -32,9 +32,8 @@ RandomizedPreconditioners = "0.1.8"
 Requires = "1"
 SparseArrays = "1.9"
 StaticArrays = "1"
-julia = "1.10"                         # Broadened to match your env/SpeedMapping
-LinearSolve = "1"                      # Broad: allows 1.x up to current 3.58 (resolver chooses compatible)
-NonlinearSolve = "3"                   # Broad: allows 3.x (resolver picks one that fits LinearSolve)
+julia = "1.10"
+NonlinearSolve = "3"                   # Keeps compatibility with SpeedMapping
 
 [extras]
 Optim = "429524aa-4258-5aef-a3af-852621145aeb"
