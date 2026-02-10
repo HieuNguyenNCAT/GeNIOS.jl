@@ -277,7 +277,7 @@ function update_x!(
     )
 
     # warm start if past first iteration
-    !isinf(solver.rp_norm) && warm_start!(linsys_solver, solver.xk)
+    !isinf(solver.rp_norm) && Krylov.warm_start!(linsys_solver, solver.xk)
     cg!(
         linsys_solver, solver.lhs_op, solver.cache.rhs;
         M=solver.P, rtol=linsys_tol
