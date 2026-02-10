@@ -3,7 +3,7 @@ module GeNIOS
 using Random
 using LinearAlgebra, SparseArrays
 using Printf
-using Krylov: CgSolver, cg!, issolved, warm_start!
+using Krylov
 using RandomizedPreconditioners
 using StaticArrays
 using LogExpFunctions: log1pexp, logistic
