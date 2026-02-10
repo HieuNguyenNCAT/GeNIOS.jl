@@ -1,7 +1,7 @@
 name = "GeNIOS"
 uuid = "633953ab-b710-48ef-9c4e-3b2d1d3d8185"
 authors = ["Theo Diamandis"]
-version = "0.2.2"
+version = "0.2.2"  # You can bump to 0.2.3 if you want to mark this as a compat update
 
 [deps]
 ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
@@ -16,21 +16,25 @@ RandomizedPreconditioners = "3e7891d3-c9d1-416a-9949-ebd96150e4f0"
 Requires = "ae029012-a4dd-5104-9daa-d747884805df"
 SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
+LinearSolve = "7ed4a6bd-7ac6-59ff-8d9a-6a81aa061f32"      # Added for SciML compat
+NonlinearSolve = "8913a72c-46f1-40a4-a5b1-6a0a8b0e9f0f"    # Added for SciML compat
 
 [compat]
 ForwardDiff = "1"
-Krylov = "0.9"
-LinearAlgebra = "1.9"
+Krylov = "0.9 - 0.10"                  # Key change: allow up to latest Krylov 0.10.x
+LinearAlgebra = "1"
 LogExpFunctions = "0.3"
 MathOptInterface = "1"
 PrecompileTools = "1"
-Printf = "1.9"
-Random = "1.9"
+Printf = "1"
+Random = "1"
 RandomizedPreconditioners = "0.1.8"
 Requires = "1"
-SparseArrays = "1.9"
+SparseArrays = "1"
 StaticArrays = "1"
-julia = "1.11.5"
+julia = "1.10"                         # Broadened slightly for wider compat
+LinearSolve = "2"                      # Allows 2.x (works with Krylov 0.9–0.10)
+NonlinearSolve = "3"                   # Allows 3.x (resolver picks compatible one)
 
 [extras]
 Optim = "429524aa-4258-5aef-a3af-852621145aeb"
