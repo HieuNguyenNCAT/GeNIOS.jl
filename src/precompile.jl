@@ -66,29 +66,6 @@
 
     # Finally, we can solve the problem.
     @compile_workload begin 
-        solver_ml = GeNIOS.MLSolver(f, λ, 0.0, A, b; fconj=fconj)
-        res = Krylov.krylov_solve!(solver_ml; options=GeNIOS.SolverOptions(
-            relax=true, use_dual_gap=true, dual_gap_tol=1e-3, verbose=false
-        ))
 
-        solver_qp = GeNIOS.QPSolver(P, q, M, l, u)
-        res = Krylov.krylov_solve!(
-            solver_qp; options=GeNIOS.SolverOptions(
-                relax=true, 
-                max_iters=1000, 
-                eps_abs=1e-4, 
-                eps_rel=1e-4, 
-                verbose=false)
-        );
-
-        solver_generic = GeNIOS.GenericSolver(
-            f, grad_f!, Hf,         # f(x)
-            g, prox_g!,             # g(z)
-            I, zeros(n);            # M, c: Mx + z = c
-            params=params
-        )
-        res = Krylov.krylov_solve!(solver_generic; options=GeNIOS.SolverOptions(
-            relax=true, verbose=false
-        ))
     end
 end
