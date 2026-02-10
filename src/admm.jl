@@ -251,7 +251,7 @@ end
 function update_x!(
     solver::Solver,
     options::SolverOptions,
-    linsys_solver::Krylov.CgSolver,
+    linsys_solver::Krylov.CgWorkspace,
     t::Int
     )
     T = eltype(solver.xk)
@@ -483,7 +483,7 @@ function krylov_solve!(
     solver.ρ = options.ρ0
     solver.lhs_op.ρ[1] = options.ρ0
     precond_time = build_preconditioner!(solver, options)
-    linsys_solver = Krylov.CgSolver(n, n, typeof(solver.xk))
+    linsys_solver = Krylov.CgWorkspace(n, n, typeof(solver.xk))
 
     # --- Logging ---
     if options.logging
