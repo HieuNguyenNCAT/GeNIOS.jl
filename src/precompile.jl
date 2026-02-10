@@ -67,12 +67,12 @@
     # Finally, we can solve the problem.
     @compile_workload begin 
         solver_ml = GeNIOS.MLSolver(f, λ, 0.0, A, b; fconj=fconj)
-        res = solve!(solver_ml; options=GeNIOS.SolverOptions(
+        res = Krylov.krylov_solve!(solver_ml; options=GeNIOS.SolverOptions(
             relax=true, use_dual_gap=true, dual_gap_tol=1e-3, verbose=false
         ))
 
         solver_qp = GeNIOS.QPSolver(P, q, M, l, u)
-        res = solve!(
+        res = Krylov.krylov_solve!(
             solver_qp; options=GeNIOS.SolverOptions(
                 relax=true, 
                 max_iters=1000, 
@@ -87,7 +87,7 @@
             I, zeros(n);            # M, c: Mx + z = c
             params=params
         )
-        res = solve!(solver_generic; options=GeNIOS.SolverOptions(
+        res = Krylov.krylov_solve!(solver_generic; options=GeNIOS.SolverOptions(
             relax=true, verbose=false
         ))
     end
